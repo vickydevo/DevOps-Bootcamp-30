@@ -1,13 +1,6 @@
 
-# Unit 2: Linux Operating System Fundamentals
+# Linux Operating System Fundamentals
 
-**Duration:** 6 Hours
-**Mode:** 2 Hours Lecture + 4 Hours Hands-on Lab
-**Learning Outcome Addressed:** LO2
-
----
-
-## 🌍 Why This Unit Is Important (In Simple Words)
 
 Linux is the **operating system that runs most servers in the world**.
 
@@ -20,7 +13,7 @@ Linux is the **operating system that runs most servers in the world**.
 
 ---
 
-## 📘 2.1 Linux OS Basics (1.5 Hours)
+## 📘  Linux OS Basics
 
 ### What is Linux? (Layman Explanation)
 
