@@ -69,6 +69,39 @@ Just like a college has **admin office, classrooms, notice board**, Linux has fo
 
 ---
 
+
+
+## Command Line & Basic Commands
+
+### What is Command Line?
+
+* Instead of clicking with mouse
+* You **type commands**
+* Faster and powerful for servers
+
+💡 Servers don’t have screens → only command line
+
+---
+
+### Essential Commands (Must Practice)
+
+#### Navigation Commands
+
+* `ls` → list files
+* `cd` → change folder
+* `pwd` → show current location
+* `find` → search files
+
+#### File Operations
+
+* `cp` → copy
+* `mv` → move/rename
+* `rm` → delete
+* `cat` → view file
+* `head`, `tail` → view start/end
+* `grep` → search inside files
+* `vi/vim/nano` → file Editors 
+ 
 ### Users & Permissions (Basic Idea)
 
 Linux controls **who can do what**.
@@ -98,38 +131,6 @@ Means:
 * Others → read, execute
 
 ---
-
-## 📘 2.2 Command Line & Basic Commands (1.5 Hours)
-
-### What is Command Line?
-
-* Instead of clicking with mouse
-* You **type commands**
-* Faster and powerful for servers
-
-💡 Servers don’t have screens → only command line
-
----
-
-### Essential Commands (Must Practice)
-
-#### Navigation Commands
-
-* `ls` → list files
-* `cd` → change folder
-* `pwd` → show current location
-* `find` → search files
-
-#### File Operations
-
-* `cp` → copy
-* `mv` → move/rename
-* `rm` → delete
-* `cat` → view file
-* `head`, `tail` → view start/end
-* `grep` → search inside files
-
-#### User & Permission
 
 * `useradd`
 * `passwd`
@@ -179,7 +180,7 @@ man ls
 
 ---
 
-## 📘 2.3 Processes & Services (1 Hour)
+## 📘 Processes & Services 
 
 ### Process vs Program (Very Simple)
 
@@ -233,7 +234,7 @@ killall process-name
 
 ---
 
-## 📘 2.4 File Permissions & User Management (1 Hour)
+## 📘File Permissions & User Management 
 
 ### Permission Examples
 
@@ -270,7 +271,7 @@ sudo passwd developer
 
 ---
 
-## 📘 2.5 Logs & Troubleshooting Basics (1 Hour)
+## 📘Logs & Troubleshooting Basics (1 Hour)
 
 ### What Are Logs?
 
@@ -323,40 +324,4 @@ Server is slow.
 👉 This is **real DevOps work**
 
 ---
-
-## ✅ Key Takeaways
-
-✔ Comfortable with Linux command line
-✔ Can manage users and permissions
-✔ Can control services
-✔ Can read logs and fix basic issues
-✔ Ready for Cloud & DevOps learning
-
----
-
-👍
----
-
-## 🎯 Unit Objectives (What Students Will Learn)
-
-After this unit, students will be able to:
-
-* Use Linux commands confidently (without fear)
-* Understand files, folders, and permissions
-* Create users and give proper access
-* Check which programs are running
-* Fix basic Linux problems using logs
-
----
-
-## 🕒 Time Distribution (6 Hours)
-
-| Section   | Topic                              | Duration  | Mode           |
-| --------- | ---------------------------------- | --------- | -------------- |
-| 2.1       | Linux OS Basics                    | 1.5 hrs   | Lecture + Demo |
-| 2.2       | Command Line & Basic Commands      | 1.5 hrs   | Lecture + Demo |
-| 2.3       | Processes & Services               | 1 hr      | Demo + Lab     |
-| 2.4       | File Permissions & User Management | 1 hr      | Lab            |
-| 2.5       | Logs & Troubleshooting Basics      | 1 hr      | Lab            |
-| **Total** |                                    | **6 hrs** |                |
 
