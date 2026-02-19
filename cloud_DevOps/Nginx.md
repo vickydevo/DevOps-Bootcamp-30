@@ -57,12 +57,12 @@ The best web server depends on your needs:
 ## Installation Steps
 ### Step 1: Update the Package Manager
 ```bash
-sudo yum update -y
+sudo apt update -y
 ```
 
 ### Step 2: Install Nginx
 ```bash
-sudo yum install -y nginx
+sudo apt install -y nginx
 ```
 
 ### Step 3: Start Nginx
@@ -85,12 +85,12 @@ sudo systemctl enable nginx
 ## Creating and Serving a Test HTML File
 ### Step 1: Create a Test HTML File
 ```bash
-echo '<h1>Hello, Nginx on Amazon Linux 2023!</h1>' | sudo tee /usr/share/nginx/html/index.html
+echo '<h1>Hello, Nginx on Amazon Linux 2023!</h1>' | sudo tee /var/www/html/index.html
 ```
 
 ### Step 2: Verify the File
 ```bash
-cat /usr/share/nginx/html/index.html
+cat /var/www/html/index.html
 ```
 
 ### Step 3: Restart Nginx (if necessary)
@@ -108,12 +108,12 @@ sudo systemctl restart nginx
 ## Updating the HTML File
 ### Step 1: Edit the HTML File
 ```bash
-echo '<h1>Updated Content: Nginx on Amazon Linux 2023!</h1>' | sudo tee /usr/share/nginx/html/index.html
+echo '<h1>Updated Content: Nginx on Amazon Linux 2023!</h1>' | sudo tee /var/www/html/index.html
 ```
 
 ### Step 2: Check the Changes
 ```bash
-cat /usr/share/nginx/html/index.html
+cat /var/www/html/index.html
 ```
 
 ### Step 3: Refresh Browser to See Updates
