@@ -1,0 +1,196 @@
+// pipeline {
+//     agent any
+//     stages {
+//         stage (" GIT CHECKOUT") {
+//             steps {
+//                 echo " GIT CLONE IS FINISHED"
+//             }
+//         }// stage1
+//         stage (" Junit") {
+//             steps {
+//                 echo " Junit IS FINISHED"
+//             }
+//         }// stage2
+//         stage (" Build") {
+//             steps {
+//                 echo " build IS FINISHED"
+//             }
+//         }// stage3
+//     }//stages
+// }//Pipeline
+
+
+--- // Jenkinsfile for java spring setup, docker build and push to DockerHub
+pipeline {
+    agent any
+    environment {
+        DOCKER_IMAGE = 'java-spring'
+        DOCKER_TAG = 'v1'
+    }
+
+    stages {
+        stage('SCM CHECKOUT') {
+            steps {
+                git branch: 'main', url: 'https://github.com/vickydevo/springboot-hello.git'
+            }
+        }
+
+        stage('Build Artifact') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Docker Image') {
+            steps {
+                sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+            }
+        }
+
+        stage('DockerHub push') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'docker_cred',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
+                        docker push $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
+                    '''
+                }
+            }
+        }
+    }
+}
+
+---// Jenkinsfile for node setup, parameterized build, tools, and environment variables.
+FROM maven:3.9-eclipse-temurin-17
+
+USER root
+
+# Install Docker CLI
+RUN apt-get update && apt-get install -y docker.io
+
+# Create docker group with same GID as host's docker group (check with `ls -ln /var/run/docker.sock`)
+RUN groupadd -g 998 docker && \
+    usermod -aG docker root
+
+WORKDIR /app
+
+
+
+pipeline {
+    agent any //{
+    //     label 'sai'
+    //     // docker {
+    //     //     image 'yourdockerhubusername/maven-docker:latest'  // Replace with actual image
+    //     //     args '-v /var/run/docker.sock:/var/run/docker.sock'
+    //     // }
+    // }
+
+    tools {
+        git 'git2'
+        maven 'm3'
+        jdk 'jdk17'
+        
+    }
+
+    parameters {
+        string(name: 'image', defaultValue: 'spring-boot', description: 'Enter docker image name')
+        string(name: 'tag', defaultValue: 'v1', description: 'Enter docker image TAG')
+    }
+
+    environment {
+        DOCKER_IMAGE = "${params.image}"
+        DOCKER_TAG = "${params.tag}"
+        // SONAR_HOST_URL = 'http://ec2-18-215-164-93.compute-1.amazonaws.com:9000'
+        // SONAR_AUTH_TOKEN = credentials('squ_71b371877b164d811d4441d58b34a507d806a31a')
+    }
+
+    stages {
+        stage('SCM CHECKOUT') {
+            steps {
+                git branch: 'main', url: 'https://github.com/vickydevo/springboot-hello.git'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+    steps {
+        withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar_token')]) {
+            sh """
+                mvn clean verify
+                mvn sonar:sonar \
+                    -Dsonar.projectKey=${DOCKER_IMAGE} \
+                    -Dsonar.projectName=${DOCKER_IMAGE} \
+                    -Dsonar.sources=src/main/java \
+                    -Dsonar.tests=src/test/java \
+                    -Dsonar.java.binaries=target/classes \
+                    -Dsonar.host.url=http://18.215.164.93:9000 \
+                    -Dsonar.token=${sonar_token} \
+                    -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+            """
+        }
+    }
+}
+
+
+
+
+       
+
+        // stage('Docker Image') {
+        //     steps {
+        //         sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
+        //     }
+        // }
+
+        // stage('DockerHub push') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: 'docker_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        //             sh '''
+        //                 echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+        //                 docker tag $DOCKER_IMAGE:$DOCKER_TAG $DOCKER_USER/$DOCKER_IMAGE:$DOCKER_TAG
+        //                 docker push $DOCKER_USER/$DOCKER_IMAGE:$DOCKER_TAG
+        //             '''
+        //         }
+        //     }
+        // }
+    }
+}
+
+
+
+
+
+
+If you want no .env file, you can inject in-line:
+stage('Docker Compose Up') {
+    steps {
+        sh """
+        export IMAGE_NAME=${IMAGE_NAME}
+        export TAG=${TAG}
+        export HOST_PORT=${HOST_PORT}
+        export CONTAINER_PORT=${CONTAINER_PORT}
+        docker-compose down || true
+        docker-compose up -d
+        """
+    }
+}
+
+work
+// for Docker push use docker pipeline push plugin  -- WORKONIT
+// stage('Docker_push') {
+//     steps {
+//         script {
+//             // Authenticate and push using Docker Pipeline Plugin
+//             docker.withRegistry('https://index.docker.io/${DOCKER_TAG}/', 'dockerhub_cred') {
+//                 def dockerImage = docker.build('springboot:latest') // Build Docker image
+//                 dockerImage.push('latest') // Push Docker image with 'latest' tag
+//             }
+//         }
+//     }
+// }
