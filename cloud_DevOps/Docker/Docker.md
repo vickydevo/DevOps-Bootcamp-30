@@ -116,6 +116,8 @@ Common Docker commands include `docker run`, `docker ps`, `docker stop`, `docker
 ### Lab:
 - Run a simple container and interact with it:
   ```bash
+  docker run -it busybox ls
+
   docker run -it ubuntu bash
   ```
 

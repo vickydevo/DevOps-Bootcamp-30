@@ -1,19 +1,9 @@
-Perfect 👍
-Below is **Unit 3 split into 2 separate `README.md` files**, written in **very simple layman terms**, **concept-by-concept**, and **exactly mapped to 5 hours**.
-You can **directly copy–paste** each section into two files.
 
----
 
-# 📘 README–1
 
-# Unit 3.1 & 3.2: IP Addressing, Subnetting & Protocols
 
-**Unit:** Networking Fundamentals
-**Duration Covered:** 2.5 Hours
-**Mode:** Lecture + Demo
-**Learning Outcome:** LO3
+# IP Addressing, Subnetting & Protocols
 
----
 
 ## 🌐 What is Networking? (Very Simple)
 
@@ -31,7 +21,7 @@ Examples:
 
 ---
 
-## 📘 3.1 IP Addressing & Subnetting (1.5 Hours)
+##  IP Addressing & Subnetting 
 
 ### What is an IP Address? (Layman Explanation)
 
@@ -145,7 +135,7 @@ Split into:
 
 ---
 
-## 📘 3.2 TCP/IP & Basic Protocols (1 Hour)
+##  TCP/IP & Basic Protocols (1 Hour)
 
 ### TCP/IP Model (Conceptual – Easy Version)
 
@@ -201,19 +191,6 @@ Split into:
 
 ---
 
----
-
-# 📘 README–2
-
-# Unit 3.3: Cloud Networking Concepts & Simple Lab
-
-**Duration Covered:** 2.5 Hours
-**Mode:** Demo + Simple Lab
-**Learning Outcome:** LO3
-
----
-
-## ☁ 3.3 Cloud Networking Concepts (1.5 Hours)
 
 ### What is a VPC? (Layman Explanation)
 
@@ -313,69 +290,3 @@ VPC: 10.0.0.0/16
 * Public door vs backdoor with guard
 
 ---
-
-## 🧪 Hands-on Lab (1 Hour – Planning Only)
-
-### Lab 3.1: Simple Network Design
-
-#### Scenario:
-
-Startup needs:
-
-* Web servers → public
-* Database → private
-* Admin access → secure
-
----
-
-### Task:
-
-Students must draw:
-
-* One VPC
-* One public subnet
-* One private subnet
-* Security group rules
-
----
-
-### Deliverable:
-
-* Diagram on paper or PowerPoint
-* No AWS configuration
-
----
-
-### Why This Lab?
-
-* Teaches **thinking like a cloud engineer**
-* Implementation will come in **Unit 4**
-
----
-
-## 🚫 What Students Are NOT Doing
-
-* No AWS/Azure configuration
-* No commands
-* No complex setup
-
-👉 Only **understanding & planning**
-
----
-
-## ✅ Final Key Takeaway (Unit 3)
-
-✔ Practical understanding of IP & subnetting
-✔ Know what VPC and security groups mean
-✔ Can read and explain a network diagram
-✔ Ready for cloud networking demos in Unit 4
-
----
-
-If you want next, I can:
-
-* Align **Unit 3 diagrams for PPT**
-* Create **interview Q&A from this unit**
-* Prepare **Unit 5: DevOps Fundamentals**
-
-Just say **NEXT** 👍
