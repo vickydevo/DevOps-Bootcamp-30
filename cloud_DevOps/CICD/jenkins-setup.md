@@ -28,6 +28,7 @@ Jenkins is an open-source automation server that helps automate parts of softwar
 ## Prerequisites
 1. A system with Java installed (Jenkins requires Java 11 or newer).
 2. Administrative privileges to install packages.
+3. system config is atleast 2 cpu , 4GB RAM and storage 15GB
 
 ## Installation Steps
 1. **Update the System**:
@@ -37,13 +38,16 @@ Jenkins is an open-source automation server that helps automate parts of softwar
 
 2. **Install Java**:
     ```bash
-    sudo apt install openjdk-11-jdk -y
+    sudo apt install openjdk-21-jdk -y
     ```
 
 3. **Add Jenkins Repository**:
     ```bash
-    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+    sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
     ```
 
 4. **Install Jenkins**:
