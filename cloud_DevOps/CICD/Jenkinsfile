@@ -31,7 +31,7 @@ pipeline {
     stages {
         stage('SCM CHECKOUT') {
             steps {
-                git branch: 'main', url: 'https://github.com/vickydevo/springboot-hello.git'
+                git branch: 'main', url: 'https://github.com/vickydevo/springboot.git'
             }
         }
 
