@@ -1,15 +1,14 @@
-# dockerfile for spring boot application 
+FROM maven:3.9.14-eclipse-temurin-21-alpine
 
-FROM maven:3.8.4-openjdk-21-slim
-
-AUTHOR maintainer="vignan"
+LABEL maintainer="vignan"
 
 WORKDIR  /opt 
 
+COPY . .
 RUN mvn clean package -DskipTests 
 
-COPY target/*.jar ./app.jar
+RUN cp target/*.jar /opt/app.jar
 
 EXPOSE 8081
 
-ENTRYPOINT [ "java", "-jar" , "./app.jar" ]
+ENTRYPOINT [ "java", "-jar" , "app.jar" ]
