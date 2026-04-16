@@ -103,7 +103,7 @@ Jenkins is an open-source automation server that helps automate parts of softwar
 ## Prerequisites
 1. A system with Java installed (Jenkins requires Java 11 or newer).
 2. Administrative privileges to install packages.
-3. system config is atleast 2 cpu , 4GB RAM and storage 15GB
+3. System config is atleast 2 cpu , 4GB RAM and storage 15GB
 
 ## Installation Steps
 1. **Update the System**:
